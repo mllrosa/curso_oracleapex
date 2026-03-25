@@ -1,0 +1,52 @@
+-- Tabelas dept e emp
+-- https://www.invertexto.com/en
+
+
+-- Seleção simples de dados
+-- select * from dept;
+-- select * from dept where loc = 'CHICAGO' or loc = 'BOSTON';
+-- select dname, loc  from dept;
+
+-- Seleção simples e organizada de dados
+-- SELECT ename, job FROM emp
+-- ORDER BY ename;
+-- ORDER BY ename DESC;
+-- ORDER BY ename ASC;
+
+-- Recuperar o nome, cargo e salário de todos os empregados, em ordem de salário.
+-- SELECT ename, job, sal
+-- FROM emp
+-- ORDER BY sal;
+
+-- Recuperar o cargo, nome e salário de todos os empregados, em ordem de cargo e nome.
+-- SELECT job, ename, sal
+-- FROM emp
+-- ORDER BY job, ename;
+
+-- Recuperar o cargo, nome e salário de todos os empregados, em ordem de ascendente de cargo e descendente de nome.
+-- SELECT job, ename, sal
+-- FROM emp
+-- ORDER BY job ASC, ename DESC;
+
+-- Recuperar o cargo, nome e salário de todos os empregados, em ordem de ascendente de cargo e descendente de nome.
+-- SELECT job, ename, sal
+-- FROM emp
+-- ORDER BY job ASC, ename DESC;
+
+-- select * from emp
+-- select job as "Função",  ename as "Nome", sal as "Salário"
+-- from emp
+-- order by job asc, ename desc;
+
+
+
+-- Exibir a quantidade de empregados da empresa.
+-- SELECT COUNT(*)
+-- FROM emp;
+-- SELECT COUNT(*) AS "Quantidade de Empregados"
+-- FROM emp;
+
+-- select distinct job from emp;
+
+-- select job, count(*) from emp group by job order by job;
+

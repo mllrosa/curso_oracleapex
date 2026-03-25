@@ -1,0 +1,14 @@
+-- create table contatos(
+--     nome varchar(50),
+--     celular varchar(20),
+--     email varchar(60),
+--     idade int,
+--     cidade varchar(30),
+--     estado varchar(02)
+-- );
+
+-- select * from contatos;
+
+-- insert into contatos(nome, celular, email, idade, cidade, estado)
+-- values('ROSA', '11 9 1860-3041', 'mllr8sa@gmail.com', 18, 'Santana de Parnaiba', 'SP');
+select * from contatos;
