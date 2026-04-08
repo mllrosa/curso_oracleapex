@@ -1,0 +1,121 @@
+-- especificando todos/nao é necessario nesse caso dependendo das condicoes do banco
+INSERT INTO contatos(nome, celular, email, idade, cidade, estado)
+VALUES('Marcos', '11 99999-88-77', 'seuemail@xxxx.com.br',
+33, 'São Paulo', 'SP');
+
+-- adicionando valores sem especificar/nao é necessario pois adiciona em todos 
+INSERT INTO contatos
+VALUES('Marcos', '11 99999-88-77', 'seuemail@xxxx.com.br',
+33, 'São Paulo', 'SP');
+
+-- adicionando valores em algumas colunas/necessario especificar/pode depender das condicoes da tabela 
+INSERT INTO contatos(nome, cidade, estado)
+VALUES('Marcos', 'São Paulo', 'SP');
+
+-- ============================================================================================
+INSERT INTO contatos (nome, celular, email, idade, cidade, estado, cpf) VALUES ('B', '11 0789-88-77	WKSP_ORACLEROSA
+INSERT INTO contatos (nome, celular, email, idade, cidade, estado, cpf) VALUES ('A', '11 6859-88-77	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+alter table contatos add cpf Varchar(14);	WKSP_ORACLEROSA
+delete from contatos where nome = 'ROSA';	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+alter table contatos add sexo varchar(01); -- alterar toda a coluna para 'm' update contatos set se	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+alter table contatos drop column sexo;	WKSP_ORACLEROSA
+alter table contatos add sexo varchar(01); -- alterar toda a coluna para 'm' update contatos set se	WKSP_ORACLEROSA
+ALTER TABLE contatos DROP sexo;	WKSP_ORACLEROSA
+alter table contatos drop sexo;	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+alter table contatos drop sexo;	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+update contatos set sexo = 'm';	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+alter table contatos add sexo varchar(01);	WKSP_ORACLEROSA
+alter table contatos add sexo varchar(01); SELECT * FROM contatos;	WKSP_ORACLEROSA
+alter table contato add sexo varchar(01); SELECT * FROM contatos;	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+update contatos set email = '@email.com' where email = 'seuemail@xxxx.com.br';	WKSP_ORACLEROSA
+update contato set email = '@email.com' where email = 'seuemail@xxxx.com.br';	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+update contato set email = '@email.com' where email = 'seuemail@xxxx.com.br'; SELECT * FROM co	WKSP_ORACLEROSA
+update contato set '@email.com' where email = 'seuemail@xxxx.com.br'	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+INSERT INTO contatos (nome, celular, email, idade, cidade, estado) VALUES ('Marcos', '11 99999-88-7	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+INSERT INTO contatos (nome, telefone, email, idade, cidade, estado) VALUES ('Marcos', '11 99999-88-	WKSP_ORACLEROSA
+SELECT * FROM contatos;	WKSP_ORACLEROSA
+INSERT INTO contatos (nome, telefone, email, idade, cidade, estado) VALUES ('Marcos', '11 99999-88-	WKSP_ORACLEROSA
+insert into contatos values('rosa', '11 234566666', 'email@.com', 33, 'sp', 'sp'); select * from c	WKSP_ORACLEROSA
+INSERT INTO contatos VALUES('Marcos', '11 99999-88-77', 'seuemail@xxxx.com.br', 33, 'São Paulo', 'SP	WKSP_ORACLEROSA
+
+-- ============================================================================================
+
+-- Exercícios / Exemplos
+-- alter table contatos add sexo varchar(01);
+INSERT INTO contatos (nome, celular, email, idade, cidade, estado, cpf, sexo) VALUES
+('rosa', '11987654321', 'rosa@email.com', 28, 'São Paulo', 'SP', '123.456.789-01', 'F'),
+('Maria Oliveira', '21987654321', 'maria.oliveira@email.com', 34, 'Rio de Janeiro', 'RJ', '234.567.890-12', 'F'),
+('Carlos Souza', '31987654321', 'carlos.souza@email.com', 45, 'Belo Horizonte', 'MG', '345.678.901-23', 'M'),
+('Ana Santos', '41987654321', 'ana.santos@email.com', 22, 'Curitiba', 'PR', '456.789.012-34', 'F'),
+('Pedro Costa', '51987654321', 'pedro.costa@email.com', 39, 'Porto Alegre', 'RS', '567.890.123-45', 'M'),
+('Juliana Pereira', '61987654321', 'juliana.pereira@email.com', 31, 'Brasília', 'DF', '678.901.234-56', 'F'),
+('Lucas Rodrigues', '71987654321', 'lucas.rodrigues@email.com', 27, 'Salvador', 'BA', '789.012.345-67', 'M'),
+('Fernanda Almeida', '81987654321', 'fernanda.almeida@email.com', 36, 'Recife', 'PE', '890.123.456-78', 'F'),
+('Rafael Gomes', '11912345678', 'rafael.gomes@email.com', 29, 'São Paulo', 'SP', '901.234.567-89', 'M'),
+('Patrícia Ribeiro', '21912345678', 'patricia.ribeiro@email.com', 41, 'Niterói', 'RJ', '012.345.678-90', 'F'),
+('Bruno Martins', '31912345678', 'bruno.martins@email.com', 33, 'Uberlândia', 'MG', '147.258.369-01', 'M'),
+('Camila Barros', '41912345678', 'camila.barros@email.com', 26, 'Londrina', 'PR', '258.369.147-02', 'F'),
+('Gustavo Rocha', '51912345678', 'gustavo.rocha@email.com', 38, 'Caxias do Sul', 'RS', '369.147.258-03', 'M'),
+('Aline Carvalho', '61912345678', 'aline.carvalho@email.com', 30, 'Brasília', 'DF', '159.357.258-04', 'F'),
+('Diego Fernandes', '71912345678', 'diego.fernandes@email.com', 44, 'Feira de Santana', 'BA', '753.951.456-05', 'M');
+
+-- 1. Exibir o nome e e-mail de todos os contatos, em ordem alfabética ascendente. (nome, celular, email, idade, cidade, estado, cpf)
+select nome, email from contatos order by nome asc;
+
+-- 2. Exibir o nome e e-mail de todos os contatos do Estado de SP.
+select nome, email, estado from contatos where estado = 'SP';
+
+-- 3. Exibir o nome e e-mail de todos os contatos do sexo feminino.
+select nome, email, sexo from contatos where sexo = 'F';
+
+-- 4. Exibir o nome, e-mail e cidade de todos os contatos do estado de SP e sexo feminino, em ordem de cidade.
+select nome, email, cidade from contatos where estado = 'SP' and sexo = 'F' order by cidade asc;
+
+-- 5. Exibir o nome e celular de todos os contatos, cujo nome começa com a letra A
+select nome, email, cidade from contatos where nome like 'A%';
+
+-- 6. Exibir o nome e cidade dos contatos com idade acima de 18, da cidade de Santana de Parnaíba.
+select nome, cidade from contatos where idade > 18 and cidade = 'São Paulo';
+
+-- 7. Quantos contatos?
+select count(*) from contatos;
+
+-- 8. Quantos contatos no estado de SP?
+select count(*) from contatos where estado = 'SP';
+
+-- 9. Quantos contatos do sexo feminino?
+select count(*) from contatos where sexo = 'F';
+
+-- 10. Quantos contatos por estado?
+SELECT COUNT(*)
+FROM contatos
+GROUP BY estado;
+
+SELECT estado, COUNT(*)
+FROM contatos
+GROUP BY estado;
+
+select * from contatos;
+
+SELECT SUM(idade)
+FROM contatos;
+
+SELECT AVG(idade)
+FROM contatos;
+
+SELECT MAX(idade)
+FROM contatos;
+
+SELECT MIN(idade)
+FROM contatos;
+
