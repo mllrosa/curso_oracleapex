@@ -1,32 +1,20 @@
 INSERT INTO cardapio values(501, 'X-Salada', 25.00, 1, 350, 101);
 INSERT INTO cardapio VALUES(500, 'Agua', 4.00, 1, 500, 100);
 
-create table cardapio( car_codigo int, car_nome varchar(50), car_preco decimal(8,2),
-create table categoria( cat_codigo int, cat_nome varchar(50) );
-create table cardapio( car_codigo int, car_nome varchar(50), car_preco decimal(8.2),
-create table formapagamento( fpg_codigo int, fpg_nome varchar(50) );	WKSP_ORACLEROSA
-create table garcom( gar_codigo int, gar_nome varchar(60), gar_dataNascimento varchar(10	WKSP_ORACLEROSA
-create table cliente( cli_codigo int, cli_cpf varchar(14), cli_nome varchar(60), cli	WKSP_ORACLEROSA
-create table cliente( cli_codigo int, cli_cpf varchar(14), cli_nome varchar(60), cli	WKSP_ORACLEROSA
-create table cliente( cli_codigo int, cli_cpf varchar(14), cli_nome varchar(60), cli	WKSP_ORACLEROSA
-create table cliente( cli_codigo int(11), cli_cpf varchar(14), cli_nome varchar(60),	WKSP_ORACLEROSA
-
-
-
-
 -- ==================================================
 
-cardapio categoria formapagamento garcom cliente
+| cardapio | categoria | formapagamento | garcom | cliente |
 
+
+| formapagamento |
 -- formapagamento: fpg_codigo, fpg_nome
--- insert into formapagamento values 
+-- insert into formapagamento values  
 -- (800, 'Dinheiro'),
 -- (801, 'Cartão de Débito'),
 -- (802, 'Cartão de Crédito'),
 -- (803, 'Pix');
 
---  garcom cliente
-
+| categoria |
 -- insert into categoria values 
 -- (100, 'Bebidas'),
 -- (101, 'Lanches'),
@@ -35,6 +23,7 @@ cardapio categoria formapagamento garcom cliente
 -- (104, 'Doces'),
 -- (105, 'Pizzas');
 
+| garcom |
 -- insert into garcom values 
 -- (400, 'Carlos', '15/07/2005', '10h - 22h'),
 -- (401, 'Silvio', '23/12/2008', '11h - 23h'),

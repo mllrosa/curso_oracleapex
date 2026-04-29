@@ -1,0 +1,98 @@
+-- ==================================================
+
+| cardapio | categoria | formapagamento | garcom | cliente |
+
+-- | cardapio |
+insert into cardapio values 
+(501, 'X-Salada', 25.00, 1, 350, 101),
+(500, 'Agua', 4.00, 1, 500, 100);
+
+-- | categoria |
+insert into categoria values 
+(100, 'Bebidas'),
+(101, 'Lanches'),
+(102, 'Sobremesa'),
+(103, 'Salgados'),
+(104, 'Doces'),
+(105, 'Pizzas');
+
+-- | formapagamento |
+insert into formapagamento values  
+(800, 'Dinheiro'),
+(801, 'Cartão de Débito'),
+(802, 'Cartão de Crédito'),
+(803, 'Pix');
+
+-- | garcom |
+insert into garcom values 
+(400, 'Carlos', '15/07/2005', '10h - 22h'),
+(401, 'Silvio', '23/12/2008', '11h - 23h'),
+(402, 'Pedro', '06/05/1999', '12h - 24h'),
+(403, 'André', '30/04/1980', '13h - 01h');
+
+-- | cliente |
+INSERT INTO CLIENTE VALUES
+(1, '12345678901', 'Ana Souza', 'Rua A, 123', 'ana@email.com', '11999990001', 'I'),
+(2, '12345678902', 'Bruno Lima', 'Rua B, 456', 'bruno@email.com', '11999990002', 'A'),
+(3, '12345678903', 'Carla Mendes', 'Rua C, 789', 'carla@email.com', '11999990003', 'I'),
+(4, '12345678904', 'Daniel Rocha', 'Rua D, 101', 'daniel@email.com', '11999990004', 'I'),
+(5, '12345678905', 'Eduarda Alves', 'Rua E, 202', 'eduarda@email.com', '11999990005', 'A'),
+(6, '12345678906', 'Felipe Costa', 'Rua F, 303', 'felipe@email.com', '11999990006', 'A'),
+(7, '12345678907', 'Gabriela Pinto', 'Rua G, 404', 'gabriela@email.com', '11999990007', 'A'),
+(8, '12345678908', 'Henrique Dias', 'Rua H, 505', 'henrique@email.com', '11999990008', 'I'),
+(9, '12345678909', 'Isabela Martins', 'Rua I, 606', 'isabela@email.com', '11999990009', 'A'),
+(10, '12345678910', 'João Ribeiro', 'Rua J, 707', 'joao@email.com', '11999990010', 'A'),
+(11, '12345678911', 'Karina Freitas', 'Rua K, 808', 'karina@email.com', '11999990011', 'A'),
+(12, '12345678912', 'Lucas Teixeira', 'Rua L, 909', 'lucas@email.com', '11999990012', 'I'),
+(13, '12345678913', 'Mariana Lopes', 'Rua M, 111', 'mariana@email.com', '11999990013', 'A'),
+(14, '12345678914', 'Nathan Gomes', 'Rua N, 222', 'nathan@email.com', '11999990014', 'A'),
+(15, '12345678915', 'Olivia Barros', 'Rua O, 333', 'olivia@email.com', '11999990015', 'A');
+
+
+
+-- Escreva a instrução SQL para:
+
+-- 1. Exibir o nome e email de todos os clientes. Ordenar o resultado por nome.
+select cli_nome, cli_email from cliente order by cli_nome asc
+
+-- 2. Exibir o nome e email dos clientes que possuem email do gmail.
+select cli_nome, cli_email from cliente where cli_email is null
+
+-- 3. Exibir o nome dos clientes que não possuem email.
+select cli_nome, cli_email from cliente where cli_email is not null
+
+-- 4. Exibir o Status e o nome do cliente.
+select cli_status, cli_nome from cliente
+
+-- 5. Quantos clientes estão ativos?
+select count(*) from cliente where cli_status = 'A'
+
+-- 6. Quantos clientes estão inativos?
+select count(*) from cliente where cli_status = 'I'
+
+-- 7. Exibir a quantidade de clientes por Status.
+select cli_status, count(*) from cliente group by cli_status
+
+-- 8. Exibir o código, nome e preço de todos os itens do cardápio.
+select car_codigo, car_nome, car_preco from cardapio
+
+-- 9. Exibir o nome da categoria, código, nome e preço de todos os itens do cardápio.
+SELECT 
+    categoria.CAT_NOME,
+    cardapio.CAR_CODIGO,
+    cardapio.CAR_NOME,
+    cardapio.CAR_PRECO
+FROM cardapio, categoria
+WHERE cardapio.CAT_CODIGO = categoria.CAT_CODIGO;
+
+-- 10 Exibir a quantidade de itens do cardápio por categoria.
+
+-- 11. Quais formas de pagamento o restaurante utiliza?
+
+-- 12. Exibir a quantidade de clientes do restaurante.
+
+-- 13. Quais lanches iniciam com a letra "A".
+
+-- 14. Quais itens do cardápio possuem "queijo" no nome.
+
+-- 15. Quais itens da categoria Doces estão com preco abaixo de 20.00.
