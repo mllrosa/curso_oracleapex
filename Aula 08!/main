@@ -1,0 +1,90 @@
+-- ==================================
+-- BANCO DE DADOS ORACLE - 06.05.2026
+-- ==================================
+
+-- CRIANDO A TABELA PEDIDO
+CREATE TABLE PEDIDO (
+    ped_numero INT NOT NULL,
+    ped_data DATE,
+    ped_valorTotal DECIMAL(6,2),
+    ped_numeroPessoas INT,
+    cli_codigo INT,
+    fpg_codigo INT
+);
+
+-- CRIANDO A TABELA ITEMPEDIDO
+CREATE TABLE ITEMPEDIDO (
+    itm_numero INT NOT NULL,
+    itm_quantidade INT,
+    itm_valorUnitario DECIMAL,
+    itm_valorTotal DECIMAL,
+    ped_numero INT,
+    gar_codigo INT,
+    car_codigo INT
+);
+
+-- INSERINDO VALORES EM ITEMPEDIDO
+INSERT INTO ITEMPEDIDO VALUES
+(1, 2, 25.00, 50.00, 1, 1, 10),
+(2, 1, 100.50, 100.50, 1, 1, 12),
+(3, 2, 42.50, 85.00, 2, 2, 5),
+(4, 4, 80.00, 320.00, 3, 1, 8),
+(5, 1, 45.90, 45.90, 4, 3, 2),
+(6, 2, 60.00, 120.00, 5, 2, 7),
+(7, 3, 70.10, 210.30, 6, 4, 15),
+(8, 2, 47.50, 95.00, 7, 3, 4),
+(9, 1, 60.00, 60.00, 8, 1, 9),
+(10, 5, 60.00, 300.00, 10, 2, 11);
+select * from itempedido
+
+-- INSERINDO VALORES EM PEDIDO
+INSERT INTO PEDIDO VALUES
+(1, '01-10-2023', 150.50, 2, 1, 1),
+(2, '01-10-2023', 85.00, 1, 2, 2),
+(3, '02-10-2023', 320.00, 4, 3, 1),
+(4, '02-10-2023', 45.90, 1, 5, 3),
+(5, '03-10-2023', 120.00, 2, 6, 2),
+(6, '03-10-2023', 210.30, 3, 9, 1),
+(7, '04-10-2023', 95.00, 2, 10, 4),
+(8, '04-10-2023', 60.00, 1, 13, 2),
+(9, '05-10-2023', 180.00, 2, 14, 1),
+(10, '05-10-2023', 300.00, 5, 15, 3);
+select * from pedido
+
+
+-- Escreva a instrução SQL para:
+
+-- 1. Exibir os dados dos clientes.
+select * from cliente
+
+-- 2. Exibir os dados das formas de pagamento.
+select * from formapagamento
+
+-- 3. Exibir os dados das categorias.
+select * from categoria
+
+-- 4. Exibir os itens do cardápio (código, nome, preço e categoria), organizar por categoria e nome do item.
+select CAR_CODIGO, CAR_NOME, CAR_PRECO,	CAT_CODIGO from cardapio
+
+-- 5. Exibir os dados do(s) pedido(s) da cliente "Claudia".
+
+-- 6. Alterar a descrição da categoria Massas para Guloseimas.
+
+-- 7. Adicionar a categoria Massas.
+-- 8. Adicionar o garçom Mário.
+insert into garcom values (404, 'Mário', '15/09/2005', '10h - 22h')
+
+update table garcom set 404 where gar_codigo = 400
+select * from garcom
+-- 9. Exibir o número do pedido, a quantidade de pessoas na mesa, o valor total do pedido e o valor de cada pessoa.
+-- 10. Exibir a quantidade de itens do cardápio por categoria.
+-- 11. Exibir a quantidade de itens consumidos em cada pedido.
+-- 12. Quais foram os itens já consumidos pela cliente "Marcia".
+-- 13. Exibir a categoria dos itens que nunca foram vendidos.
+-- 14. Exibir o nome dos clientes que nunca pediram "Guloseimas"
+-- 15. Exibir o faturamento no mês de setembro/2024.
+-- 16. Exibir o faturamento no mês de setembro/2024 organizado por forma de pagamento.
+-- 17. Exibir o faturamento do mês de setembro/2024, organizado por categoria.
+-- 18. Exibir o(s) nome(s) dos garçons que já atenderam a cliente "Veronice".
+-- 19. Qual foi o valor do maior pedido?
+-- 20. Quais clientes possuem pedidos maiores que a média dos pedidos da cliente Veronice?.  Exibir o nome do cliente, numero, data  e hora do pedido; número do item, código e nome do item do cardápio, quantidade, valor unitário e valor total do item.
