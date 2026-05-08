@@ -13,43 +13,19 @@ INSERT INTO contatos(nome, cidade, estado)
 VALUES('Marcos', 'São Paulo', 'SP');
 
 -- ============================================================================================
-INSERT INTO contatos (nome, celular, email, idade, cidade, estado, cpf) VALUES ('B', '11 0789-88-77	WKSP_ORACLEROSA
-INSERT INTO contatos (nome, celular, email, idade, cidade, estado, cpf) VALUES ('A', '11 6859-88-77	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-alter table contatos add cpf Varchar(14);	WKSP_ORACLEROSA
+-- Alterando a tabela adicionando a coluna cpf
+alter table contatos add cpf Varchar(14);
+
+--  Deletando as linhas da tabela coluna em que a coluna nome correspode ROSA
 delete from contatos where nome = 'ROSA';	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-alter table contatos add sexo varchar(01); -- alterar toda a coluna para 'm' update contatos set se	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-alter table contatos drop column sexo;	WKSP_ORACLEROSA
-alter table contatos add sexo varchar(01); -- alterar toda a coluna para 'm' update contatos set se	WKSP_ORACLEROSA
-ALTER TABLE contatos DROP sexo;	WKSP_ORACLEROSA
-alter table contatos drop sexo;	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-alter table contatos drop sexo;	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-update contatos set sexo = 'm';	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-alter table contatos add sexo varchar(01);	WKSP_ORACLEROSA
-alter table contatos add sexo varchar(01); SELECT * FROM contatos;	WKSP_ORACLEROSA
-alter table contato add sexo varchar(01); SELECT * FROM contatos;	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
+
+-- Alterando a tabela par aexcluir a coluna sexo
+alter table contatos drop column sexo;
+
+--  Alterando o email de uma linha com update
 update contatos set email = '@email.com' where email = 'seuemail@xxxx.com.br';	WKSP_ORACLEROSA
-update contato set email = '@email.com' where email = 'seuemail@xxxx.com.br';	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-update contato set email = '@email.com' where email = 'seuemail@xxxx.com.br'; SELECT * FROM co	WKSP_ORACLEROSA
-update contato set '@email.com' where email = 'seuemail@xxxx.com.br'	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-INSERT INTO contatos (nome, celular, email, idade, cidade, estado) VALUES ('Marcos', '11 99999-88-7	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-INSERT INTO contatos (nome, telefone, email, idade, cidade, estado) VALUES ('Marcos', '11 99999-88-	WKSP_ORACLEROSA
-SELECT * FROM contatos;	WKSP_ORACLEROSA
-INSERT INTO contatos (nome, telefone, email, idade, cidade, estado) VALUES ('Marcos', '11 99999-88-	WKSP_ORACLEROSA
-insert into contatos values('rosa', '11 234566666', 'email@.com', 33, 'sp', 'sp'); select * from c	WKSP_ORACLEROSA
-INSERT INTO contatos VALUES('Marcos', '11 99999-88-77', 'seuemail@xxxx.com.br', 33, 'São Paulo', 'SP	WKSP_ORACLEROSA
 
 -- ============================================================================================
-
 -- Exercícios / Exemplos
 -- alter table contatos add sexo varchar(01);
 INSERT INTO contatos (nome, celular, email, idade, cidade, estado, cpf, sexo) VALUES
