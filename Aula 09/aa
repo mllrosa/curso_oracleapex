@@ -1,0 +1,87 @@
+1. Exibir os dados dos clientes.
+2. Exibir os dados das formas de pagamento.
+3. Exibir os dados das categorias.
+4. Exibir os itens do cardápio (código, nome, preço e categoria), organizar por categoria e nome do item.
+5. Exibir os dados do(s) pedido(s) da cliente "Claudia".
+6. Alterar a descrição da categoria Massas para Guloseimas.
+7. Adicionar a categoria Massas.
+8. Adicionar o garçom Mário.
+9. Exibir o número do pedido, a quantidade de pessoas na mesa, o valor total do pedido e o valor de cada pessoa.
+10. Exibir a quantidade de itens do cardápio por categoria.
+11. Exibir a quantidade de itens consumidos em cada pedido.
+12. Quais foram os itens já consumidos pela cliente "Marcia".
+13. Exibir a categoria dos itens que nunca foram vendidos.
+14. Exibir o nome dos clientes que nunca pediram "Guloseimas"
+15. Exibir o faturamento no mês de setembro/2024.
+16. Exibir o faturamento no mês de setembro/2024 organizado por forma de pagamento.
+17. Exibir o faturamento do mês de setembro/2024, organizado por categoria.
+18. Exibir o(s) nome(s) dos garçons que já atenderam a cliente "Veronice".
+19. Qual foi o valor do maior pedido?
+20. Quais clientes possuem pedidos maiores que a média dos pedidos da cliente Veronice?.  Exibir o nome do cliente, numero, data  e hora do pedido; número do item, código e nome do item do cardápio, quantidade, valor unitário e valor total do item.
+
+13.05.2026
+==============
+
+SELECT cliente.cli_nome, pedido.ped_numero, pedido.ped_data, 
+               cardapio.car_nome, itempedido.itm_quantidade
+FROM cliente, pedido, itempedido, cardapio
+WHERE cliente.cli_codigo           = pedido.cli_codigo AND
+               pedido.ped_numero     = itempedido.ped_numero AND
+               itempedido.car_codigo = cardapio.car_codigo AND
+               cliente.cli_nome            = "Marcelo"
+ORDER BY pedido.ped_data, cardapio.car_nome;
+
+SELECT cliente.cli_nome AS "Nome", pedido.ped_numero AS "n° Pedido",
+               pedido.ped_data AS "Data",  cardapio.car_nome AS "Nome Produto",               
+               itempedido.itm_quantidade AS "Quantidade"
+FROM cliente, pedido, itempedido, cardapio
+WHERE cliente.cli_codigo           = pedido.cli_codigo AND
+               pedido.ped_numero     = itempedido.ped_numero AND
+               itempedido.car_codigo = cardapio.car_codigo AND
+               cliente.cli_nome            = "Marcelo"
+ORDER BY pedido.ped_data, cardapio.car_nome;
+
+SELECT cliente.cli_nome, garcom.gar_nome
+FROM cliente, pedido, itempedido, garcom
+WHERE cliente.cli_codigo           = pedido.cli_codigo AND
+               pedido.ped_numero     = itempedido.ped_numero AND
+               itempedido.gar_codigo = garcom.gar_codigo
+
+SELECT c.cli_nome, g.gar_nome
+FROM cliente AS c, pedido AS p, itempedido AS i, garcom AS g
+WHERE c.cli_codigo           = p.cli_codigo AND
+               p.ped_numero      = i.ped_numero AND
+               i.gar_codigo          = g.gar_codigo
+
+Na prática, SGBD executa da seguinte forma:
+
+    FROM cliente AS c, pedido AS p, itempedido AS i, garcom AS g
+    WHERE c.cli_codigo           = p.cli_codigo AND
+                   p.ped_numero      = i.ped_numero AND
+                   i.gar_codigo          = g.gar_codigo
+    SELECT c.cli_nome, g.gar_nome
+
+
+SELECT categoria.cat_nome, cardapio.car_nome, cardapio.car_preco
+FROM categoria INNER JOIN cardapio USING(cat_codigo)
+ORDER BY categoria.cat_nome, cardapio.car_nome;
+
+SELECT categoria.cat_nome, cardapio.car_nome, cardapio.car_preco
+FROM categoria INNER JOIN cardapio ON(categoria.cat_codigo = cardapio.cat_codigo);
+
+Dado:
+    aluno{ ra, nome, email, codigocurso }
+    curso{ codcurso, nome, duracao}
+
+Exibir o nome do aluno e o curso
+    SELECT aluno.nome, curso.nome
+    FROM aluno INNER JOIN curso ON(aluno.codigocurso = curso.codcurso);
+
+    ** não é possível utilizar o Using, pois o nome do campo que associa
+        as tabelas possuem nomes diferentes.
+
+
+SELECT cliente.cli_nome
+FROM cliente INNER JOIN pedido USING(cli_codigo)
+                       INNER JOIN formapagamento USING(fpg_codigo)
+WHERE formapagamento.fpg_nome = "PIX";

@@ -1,0 +1,37 @@
+# ==================================
+# BANCO DE DADOS ORACLE - 13.05.2026
+# ==================================
+
+# Material da Oracle: 
+# https://drive.google.com/drive/folders/1WSRdQb3_iQ5D8lnRZ8ru7aJRQv8_v6Zq?usp=sharing
+
+# SELECT
+# FROM 
+# WHERE
+# ORDER BY
+# GROUP BY 
+# HAVING
+# ==================================
+
+
+
+# Escreva a instrução SQL para:
+SELECT cliente.cli_nome AS "Nome",
+       pedido.ped_numero AS "n° Pedido",
+       pedido.ped_data AS "Data",
+       cardapio.car_nome AS "Nome Produto",
+       itempedido.itm_quantidade AS "Quantidade"
+FROM cliente, pedido, itempedido, cardapio
+WHERE cliente.cli_codigo = pedido.cli_codigo
+  AND pedido.ped_numero = itempedido.ped_numero
+  AND itempedido.car_codigo = cardapio.car_codigo
+  AND cliente.cli_nome = 'João Ribeiro'
+ORDER BY pedido.ped_data, cardapio.car_nome;
+
+
+Na prática, SGBD executa da seguinte forma:
+    FROM cliente AS c, pedido AS p, itempedido AS i, garcom AS g
+    WHERE c.cli_codigo           = p.cli_codigo AND
+                   p.ped_numero      = i.ped_numero AND
+                   i.gar_codigo          = g.gar_codigo
+    SELECT c.cli_nome, g.gar_nome
