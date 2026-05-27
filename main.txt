@@ -3,3 +3,24 @@ https://algoritmoselogica.com.br/site2/moodle/
 
 # Material da Oracle: 
 # https://drive.google.com/drive/folders/1WSRdQb3_iQ5D8lnRZ8ru7aJRQv8_v6Zq?usp=sharing
+
+
+Caso gere erro no commit
+
+git status
+
+git add .
+
+====================
+
+# 1. Veja quais arquivos foram modificados ou criados
+git status
+
+# 2. Adicione os arquivos que você quer incluir no commit
+git add .
+# (O ponto adiciona TUDO. Se quiser um arquivo específico: git add nome-do-arquivo.txt)
+
+# 3. Faça o commit com uma mensagem explicativa
+git commit -m "Sua mensagem de commit aqui"
+
+git push origin nome-da-sua-branch

@@ -1,0 +1,212 @@
+-- Drops para excuir tabelas existentes(deve ser executado apenas um por vez)
+DROP TABLE ITEMPEDIDO CASCADE CONSTRAINTS;
+DROP TABLE PEDIDO CASCADE CONSTRAINTS;
+DROP TABLE CARDAPIO CASCADE CONSTRAINTS;
+DROP TABLE CATEGORIA CASCADE CONSTRAINTS;
+DROP TABLE FORMAPAGAMENTO CASCADE CONSTRAINTS;
+DROP TABLE GARCOM CASCADE CONSTRAINTS;
+DROP TABLE CLIENTE CASCADE CONSTRAINTS;
+
+-- Recriando as tabelas anteriores
+CREATE TABLE CATEGORIA (
+    cat_codigo INT,
+    cat_nome VARCHAR2(50) NOT NULL,
+    CONSTRAINT pk_categoria PRIMARY KEY (cat_codigo)
+);
+
+CREATE TABLE FORMAPAGAMENTO (
+    fpg_codigo INT,
+    fpg_nome VARCHAR2(50) NOT NULL,
+    CONSTRAINT pk_formapagamento PRIMARY KEY (fpg_codigo)
+);
+
+CREATE TABLE GARCOM (
+    gar_codigo INT,
+    gar_nome VARCHAR2(60) NOT NULL,
+    gar_datanascimento VARCHAR2(10),
+    gar_horaTrabalho VARCHAR2(15),
+    CONSTRAINT pk_garcom PRIMARY KEY (gar_codigo)
+);
+
+CREATE TABLE CLIENTE (
+    cli_codigo INT,
+    cli_cpf VARCHAR2(14) NOT NULL,
+    cli_nome VARCHAR2(60) NOT NULL,
+    cli_dataNascimento VARCHAR2(10),
+    cli_email VARCHAR2(60),
+    cli_telefone VARCHAR2(15),
+    cli_status VARCHAR2(1),
+    CONSTRAINT pk_cliente PRIMARY KEY (cli_codigo)
+);
+
+CREATE TABLE CARDAPIO (
+    car_codigo INT,
+    car_nome VARCHAR2(50) NOT NULL,
+    car_preco DECIMAL(8,2) NOT NULL,
+    car_unidade INT,
+    car_pesolitro INT,
+    cat_codigo INT,
+    CONSTRAINT pk_cardapio PRIMARY KEY (car_codigo),
+    CONSTRAINT fk_cardapio_categoria FOREIGN KEY (cat_codigo) REFERENCES CATEGORIA(cat_codigo)
+);
+
+CREATE TABLE PEDIDO (
+    ped_numero INT,
+    ped_data DATE NOT NULL,
+    ped_valorTotal DECIMAL(8,2),
+    ped_numeroPessoas INT,
+    cli_codigo INT,
+    fpg_codigo INT,
+    CONSTRAINT pk_pedido PRIMARY KEY (ped_numero),
+    CONSTRAINT fk_pedido_cliente FOREIGN KEY (cli_codigo) REFERENCES CLIENTE(cli_codigo),
+    CONSTRAINT fk_pedido_formapg FOREIGN KEY (fpg_codigo) REFERENCES FORMAPAGAMENTO(fpg_codigo)
+);
+
+CREATE TABLE ITEMPEDIDO (
+    itm_numero INT,
+    itm_quantidade INT NOT NULL,
+    itm_valorunitario DECIMAL(8,2) NOT NULL,
+    itm_valorTotal DECIMAL(8,2),
+    ped_numero INT,
+    gar_codigo INT,
+    car_codigo INT,
+    CONSTRAINT pk_itempedido PRIMARY KEY (itm_numero),
+    CONSTRAINT fk_item_pedido FOREIGN KEY (ped_numero) REFERENCES PEDIDO(ped_numero),
+    CONSTRAINT fk_item_garcom FOREIGN KEY (gar_codigo) REFERENCES GARCOM(gar_codigo),
+    CONSTRAINT fk_item_cardapio FOREIGN KEY (car_codigo) REFERENCES CARDAPIO(car_codigo)
+);
+
+-- Adicionando valores nas tabelas
+-- --- CATEGORIA ---
+INSERT INTO CATEGORIA (cat_codigo, cat_nome) VALUES 
+(100, 'Bebidas'),
+(101, 'Lanches'),
+(102, 'Sobremesa'),
+(103, 'Salgados'),
+(104, 'Doces'),
+(105, 'Pizzas'),
+(106, 'Porções'),
+(107, 'Sucos Naturais'),
+(108, 'Entradas'),
+(109, 'Pratos Feitos'),
+(110, 'Massas'),
+(111, 'Pratos Executivos');
+
+
+-- --- CATEGORIA ---
+INSERT INTO CATEGORIA (cat_codigo, cat_nome) VALUES 
+(100, 'Bebidas'),
+(101, 'Lanches'),
+(102, 'Sobremesa'),
+(103, 'Salgados'),
+(104, 'Doces'),
+(105, 'Pizzas'),
+(106, 'Porções'),
+(107, 'Sucos Naturais'),
+(108, 'Entradas'),
+(109, 'Pratos Feitos'),
+(110, 'Massas'),
+(111, 'Pratos Executivos');
+
+
+-- --- FORMAPAGAMENTO ---
+INSERT INTO FORMAPAGAMENTO (fpg_codigo, fpg_nome) VALUES 
+(1, 'Dinheiro'),
+(2, 'Cartão de Débito'),
+(3, 'Cartão de Crédito'),
+(4, 'Pix'),
+(5, 'Vale Refeição (VR)'),
+(6, 'Ticket Restaurante'),
+(7, 'Sodexo Pass'),
+(8, 'Alelo Refeição'),
+(9, 'PicPay'),
+(10, 'Mercado Pago'),
+(11, 'Transferência Bancária'),
+(12, 'Crédito da Casa');
+
+-- --- GARCOM ---
+INSERT INTO GARCOM (gar_codigo, gar_nome, gar_datanascimento, gar_horaTrabalho) VALUES 
+(400, 'Carlos', '2005-07-15', '10h - 22h'),
+(401, 'Silvio', '2008-12-23', '11h - 23h'),
+(402, 'Pedro', '1999-05-06', '12h - 24h'),
+(403, 'André', '1980-04-30', '13h - 01h'),
+(404, 'Fernanda', '1994-02-14', '08h - 16h'),
+(405, 'Juliana', '1991-08-19', '16h - 00h'),
+(406, 'Marcos', '1987-11-05', '12h - 20h'),
+(407, 'Lucas', '1996-03-22', '18h - 02h'),
+(408, 'Roberto', '1993-09-10', '10h - 18h'),
+(409, 'Aline', '1995-01-25', '14h - 22h'),
+(410, 'Rodrigo', '1989-06-12', '11h - 19h'),
+(411, 'Camila', '1992-07-08', '17h - 01h');
+
+-- --- CLIENTE ---
+INSERT INTO CLIENTE (cli_codigo, cli_cpf, cli_nome, cli_dataNascimento, cli_email, cli_telefone, cli_status) VALUES 
+(1, '12345678901', 'Ana Souza', '1990-01-01', 'ana@email.com', '11999990001', 'I'),
+(2, '12345678902', 'Bruno Lima', '1988-05-12', 'bruno@email.com', '11999990002', 'A'),
+(3, '12345678903', 'Carla Mendes', '1995-08-22', 'carla@email.com', '11999990003', 'I'),
+(4, '12345678904', 'Daniel Rocha', '1992-03-14', 'daniel@email.com', '11999990004', 'I'),
+(5, '12345678905', 'Eduarda Alves', '2000-11-30', 'eduarda@email.com', '11999990005', 'A'),
+(6, '12345678906', 'Felipe Costa', '1985-07-19', 'felipe@email.com', '11999990006', 'A'),
+(7, '12345678907', 'Gabriela Pinto', '1993-04-04', 'gabriela@email.com', '11999990007', 'A'),
+(8, '12345678908', 'Henrique Dias', '1991-05-05', 'henrique@email.com', '11999990008', 'I'),
+(9, '12345678909', 'Isabela Martins', '1994-09-05', 'isabela@email.com', '11999990009', 'A'),
+(10, '12345678910', 'João Ribeiro', '1991-12-01', 'joao@email.com', '11999990010', 'A'),
+(11, '12345678911', 'Karina Freitas', '1987-02-08', 'karina@email.com', '11999990011', 'A'),
+(12, '12345678912', 'Lucas Teixeira', '1996-09-09', 'lucas@email.com', '11999990012', 'I'),
+(13, '12345678913', 'Mariana Lopes', '1997-02-28', 'mariana@email.com', '11999990013', 'A'),
+(14, '12345678914', 'Nathan Gomes', '1989-06-11', 'nathan@email.com', '11999990014', 'A'),
+(15, '12345678915', 'Olivia Barros', '2001-10-10', 'olivia@email.com', '11999990015', 'A');
+
+-- --- CARDAPIO ---
+INSERT INTO CARDAPIO (car_codigo, car_nome, car_preco, car_unidade, car_pesolitro, cat_codigo) VALUES 
+(500, 'Agua Mineral', 4.00, 1, 500, 100),
+(501, 'X-Salada', 25.00, 1, 350, 101),
+(502, 'Refrigerante Lata', 6.00, 1, 350, 100),
+(503, 'Suco de Laranja 500ml', 9.00, 1, 500, 107),
+(504, 'Batata Frita Grande', 35.00, 1, 600, 106),
+(505, 'Coxinha de Frango', 8.00, 1, 150, 103),
+(506, 'Pizza Margherita', 48.00, 1, 800, 105),
+(507, 'Pizza Calabresa', 50.00, 1, 850, 105),
+(508, 'Pudim de Leite', 12.00, 1, 200, 102),
+(509, 'Brigadeiro Gourmet', 5.00, 1, 40, 104),
+(510, 'Prato Feito - Filé de Frango', 28.00, 1, 500, 109),
+(511, 'Lasanha à Bolonhesa', 42.00, 1, 600, 110);
+
+-- --- PEDIDO ---
+-- --- PEDIDO (DIA-MÊS-ANO) ---
+INSERT INTO PEDIDO (ped_numero, ped_data, ped_valorTotal, ped_numeroPessoas, cli_codigo, fpg_codigo) VALUES 
+(1, TO_DATE('10-05-2026', 'DD-MM-YYYY'), 54.00, 2, 1, 1),
+(2, TO_DATE('10-05-2026', 'DD-MM-YYYY'), 31.00, 1, 2, 2),
+(3, TO_DATE('11-05-2026', 'DD-MM-YYYY'), 16.00, 4, 3, 1),
+(4, TO_DATE('11-05-2026', 'DD-MM-YYYY'), 25.00, 1, 4, 3),
+(5, TO_DATE('12-05-2026', 'DD-MM-YYYY'), 83.00, 2, 5, 2),
+(6, TO_DATE('12-05-2026', 'DD-MM-YYYY'), 56.00, 3, 6, 4),
+(7, TO_DATE('13-05-2026', 'DD-MM-YYYY'), 112.00, 2, 7, 4),
+(8, TO_DATE('13-05-2026', 'DD-MM-YYYY'), 12.00, 1, 9, 5),
+(9, TO_DATE('14-05-2026', 'DD-MM-YYYY'), 36.00, 2, 10, 1),
+(10, TO_DATE('14-05-2026', 'DD-MM-YYYY'), 42.00, 1, 11, 3),
+(11, TO_DATE('15-05-2026', 'DD-MM-YYYY'), 100.00, 3, 13, 2),
+(12, TO_DATE('15-05-2026', 'DD-MM-YYYY'), 70.00, 2, 14, 4);
+
+
+-- --- ITEMPEDIDO ---
+INSERT INTO ITEMPEDIDO (itm_numero, itm_quantidade, itm_valorunitario, itm_valorTotal, ped_numero, gar_codigo, car_codigo) VALUES 
+(1, 2, 25.00, 50.00, 1, 400, 501),
+(2, 1, 4.00, 4.00, 1, 400, 500),
+(3, 1, 25.00, 25.00, 2, 401, 501),
+(4, 1, 6.00, 6.00, 2, 401, 502),
+(5, 4, 4.00, 16.00, 3, 402, 500),
+(6, 1, 25.00, 25.00, 4, 403, 501),
+(7, 1, 48.00, 48.00, 5, 404, 506),
+(8, 1, 35.00, 35.00, 5, 404, 504),
+(9, 2, 28.00, 56.00, 6, 405, 510),
+(10, 2, 50.00, 100.00, 7, 406, 507),
+(11, 2, 6.00, 12.00, 7, 406, 502),
+(12, 1, 12.00, 12.00, 8, 407, 508),
+(13, 4, 9.00, 36.00, 9, 408, 503),
+(14, 1, 42.00, 42.00, 10, 409, 511),
+(15, 2, 50.00, 100.00, 11, 410, 507),
+(16, 1, 35.00, 35.00, 12, 411, 504),
+(17, 1, 25.00, 25.00, 12, 411, 501),
+(18, 2, 5.00, 10.00, 12, 411, 509);
+
