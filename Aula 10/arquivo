@@ -1,0 +1,19 @@
+# brModelo 3.2.
+# https://sourceforge.net/projects/brmodelo/
+# Arquivo brModelo
+
+Projeto Banco Dados 1
+
+- proj. Conceitual
+
+- proj. Logico
+
+- proj. Fisico
+    - Dicionario de Dados
+    - Instâncias das Tabelas
+
+
+As tabelas sao as nossas identidades e os atributos sao os campos
+
+
+# banco de dados relacional X Nao relacional
